@@ -32,7 +32,7 @@ _From game to benchmark: turn a simple maze into an intelligent validation platf
 - Merge tested work only.
 - Sync regularly with main.
 
-**Status**: Integrating RAG chatbot (In Progress)
+**Status**: Polishing UI (In Progress)
 
 ## Architecture
 
