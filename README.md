@@ -22,18 +22,17 @@ _From game to benchmark: turn a simple maze into an intelligent validation platf
 
 </div>
 
-## **Branch note:** `dev`
+## Branch Notes: `main`
 
-**Purpose**: Primary integration branch for active development. Features, fixes and refactors are merged here before being promoted to `main`.
+**Purpose**: Primary integration branch for active development. Features, fixes, and refactors are merged here before being promoted to production.
 
 **Notes**
 
-- Keep builds passing (`mvn test`).
+- Keep builds passing.
 - Merge tested work only.
-- Sync regularly with `main`.
-- May be unstable; do not demo from here.
+- Sync regularly with main.
 
-**Status**: Building the pipeline, invariants and property tests; planted-defect demo in progress (In Progress)
+**Status**: Integrating RAG chatbot (In Progress)
 
 ## Architecture
 
