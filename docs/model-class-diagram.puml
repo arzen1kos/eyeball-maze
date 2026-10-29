@@ -1,0 +1,160 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+enum Direction {
+  UP
+  DOWN
+  LEFT
+  RIGHT
+}
+
+enum Color {
+  BLUE
+  RED
+  YELLOW
+  GREEN
+  BLANK
+  PURPLE
+}
+
+enum Shape {
+  DIAMOND
+  CROSS
+  STAR
+  FLOWER
+  BLANK
+  LIGHTNING
+}
+
+enum ErrorCode {
+  INDEX_OUT_OF_BOUNDS
+  SQUARE_NOT_FOUND
+  INVALID_MOVE
+}
+
+enum Message {
+  OK
+  DIFFERENT_SHAPE_OR_COLOR
+  BACKWARDS_MOVE
+  MOVING_OVER_BLANK
+  MOVING_DIAGONALLY
+  DIAMOND
+  CROSS
+  STAR
+  FLOWER
+  BLANK
+  LIGHTNING
+}
+
+interface ILevelHolder {
+  +addLevel(height: int, width: int): void
+  +getLevelWidth(): int
+  +getLevelHeight(): int
+  +setLevel(levelNumber: int): void
+  +getLevelCount(): int
+}
+
+interface IGoalHolder {
+  +addGoal(row: int, column: int): void
+  +getGoalCount(): int
+  +hasGoalAt(targetRow: int, targetColumn: int): boolean
+  +getCompletedGoalCount(): int
+}
+
+interface ISquareHolder {
+  +addSquare(square: Square, row: int, column: int): void
+  +getColorAt(row: int, column: int): Color
+  +getShapeAt(row: int, column: int): Shape
+}
+
+interface IEyeballHolder {
+  +addEyeball(row: int, column: int, direction: Direction): void
+  +getEyeballRow(): int
+  +getEyeballColumn(): int
+  +getEyeballDirection(): Direction
+}
+
+interface IMoving {
+  +canMoveTo(destinationRow: int, destinationColumn: int): boolean
+  +messageIfMovingTo(destinationRow: int, destinationColumn: int): Message
+  +isDirectionOK(destinationRow: int, destinationColumn: int): boolean
+  +checkDirectionMessage(destinationRow: int, destinationColumn: int): Message
+  +hasBlankFreePathTo(destinationRow: int, destinationColumn: int): boolean
+  +checkMessageForBlankOnPathTo(destinationRow: int, destinationColumn: int): Message
+  +moveTo(destinationRow: int, destinationColumn: int): void
+}
+
+class Game {
+  -squareCollection: Map<String, Square>
+  -levelCollection: List<GameLevel>
+  -levelCount: int
+  -theEyeball: EyeBall
+  -gameLevel: GameLevel
+}
+
+class GameException {
+  -errorCode: ErrorCode
+  +getErrorCode(): ErrorCode
+}
+
+abstract class Square {
+  +isGoal: boolean
+  #color: Color
+  #shape: Shape
+}
+
+class PlayableSquare {
+  +PlayableSquare()
+  +PlayableSquare(color: Color, shape: Shape)
+  +setAsGoal(): void
+}
+
+class BlankSquare
+
+class Position {
+  #row: int
+  #column: int
+  +Position(row: int, column: int)
+  +getRow(): int
+  +getColumn(): int
+}
+
+class EyeBall {
+  #currentPosition: Position
+  #currentDirection: Direction
+  +EyeBall(newYPosition: int, newXPosition: int, direction: Direction)
+  +getXPosition(): int
+  +getYPosition(): int
+  +getDirection(): Direction
+  +updateEyeball(row: int, column: int): void
+  +getNewEyeballFacingDirection(targetY: int, targetX: int): Direction
+}
+
+class GameLevel {
+  #levelNumber: int
+  #levelWidth: int
+  #levelHeight: int
+  +totalGoalCount: int
+  +completedGoalCount: int
+  +GameLevel(levelNumber: int, levelHeight: int, levelWidth: int)
+  +getLevelWidth(): int
+  +getLevelHeight(): int
+}
+
+Game ..|> ILevelHolder
+Game ..|> IGoalHolder
+Game ..|> ISquareHolder
+Game ..|> IEyeballHolder
+Game ..|> IMoving
+Square <|-- PlayableSquare
+Square <|-- BlankSquare
+Game "1" o-- "0..*" GameLevel
+Game "1" o-- "0..1" EyeBall
+Game "1" o-- "0..*" Square
+EyeBall "1" *-- "1" Position
+EyeBall --> Direction
+Square --> Color
+Square --> Shape
+GameException --> ErrorCode
+Game ..> Message
+@enduml
