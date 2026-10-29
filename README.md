@@ -24,16 +24,15 @@ _From game to benchmark: turn a simple maze into an intelligent validation platf
 
 ## **Branch note:** `dev`
 
-**Purpose**: Primary integration branch for active development. Features, fixes and refactors are merged here before being promoted to `main`.
+**Purpose**: All sound and video assets — sound toggle, win jingle, invalid-move sound, and rules explanation video.
 
 **Notes**
 
-- Keep builds passing (`mvn test`).
-- Merge tested work only.
-- Sync regularly with `main`.
-- May be unstable; do not demo from here.
+- Keep audio files under `res/raw/` or `res/media/`, never in `src/`.
+- Test on at least one device with muted speaker to confirm toggle works.
+- Video assets should be under 10 s to keep APK size reasonable.
 
-**Status**: Building the pipeline, invariants and property tests; planted-defect demo in progress (In Progress)
+**Status**: Not Started
 
 ## Architecture
 
@@ -192,12 +191,9 @@ mvn test
 
 ## Next steps
 
-- Add benchmark scoring and reporting
-- Introduce multiple agent strategies
-- Create adversarial maze scenarios
-- Add Kubernetes-based benchmark jobs
-- Integrate telemetry and dashboards
-- Expand support for security and policy testing
+- Add sound toggle button and persist preference across sessions
+- Wire win and invalid-move audio triggers to the game events
+- Embed rules video with a play button accessible from the main menu
 
 ---
 
