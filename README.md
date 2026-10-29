@@ -22,18 +22,17 @@ _From game to benchmark: turn a simple maze into an intelligent validation platf
 
 </div>
 
-## **Branch note:** `dev`
+## **Branch note:** `feature/timer-pause`
 
-**Purpose**: Primary integration branch for active development. Features, fixes and refactors are merged here before being promoted to `main`.
+**Purpose**: Elapsed-time display and pause/resume that stops the timer and hides the level.
 
 **Notes**
 
-- Keep builds passing (`mvn test`).
-- Merge tested work only.
-- Sync regularly with `main`.
-- May be unstable; do not demo from here.
+- Depends on `feature/core-game` being merged first.
+- Timer must stop on `onPause()` (lifecycle), not just on the in-game pause button.
+- Display format: `MM:SS`.
 
-**Status**: Building the pipeline, invariants and property tests; planted-defect demo in progress (In Progress)
+**Status**: Not Started
 
 ## Architecture
 
@@ -192,12 +191,9 @@ mvn test
 
 ## Next steps
 
-- Add benchmark scoring and reporting
-- Introduce multiple agent strategies
-- Create adversarial maze scenarios
-- Add Kubernetes-based benchmark jobs
-- Integrate telemetry and dashboards
-- Expand support for security and policy testing
+- Add a `CountDownTimer` or `Handler`-based elapsed-time tracker
+- Implement pause overlay that hides the maze and stops the clock
+- Hook into `onPause()`/`onResume()` so the timer survives config changes
 
 ---
 
