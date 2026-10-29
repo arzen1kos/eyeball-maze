@@ -22,9 +22,15 @@ _From game to benchmark: turn a simple maze into an intelligent validation platf
 
 </div>
 
-## **Branch note:** `dev`
+## **Branch note:** `feature/core-game`
 
-**Purpose**: Primary integration branch for active development. Features, fixes and refactors are merged here before being promoted to `main`.
+**Purpose**: Implements all 10 MUST features, which is the playable core of the game.
+
+- level display
+- player movement (4 directions)
+- move validation
+- win/lose detection
+- and the dialogue on game end.
 
 **Notes**
 
@@ -33,7 +39,7 @@ _From game to benchmark: turn a simple maze into an intelligent validation platf
 - Sync regularly with `main`.
 - May be unstable; do not demo from here.
 
-**Status**: Building the pipeline, invariants and property tests; planted-defect demo in progress (In Progress)
+**Status**: In Progress
 
 ## Architecture
 
@@ -173,31 +179,11 @@ kubectl logs -l app=eyeballmaze-ai
 mvn test
 ```
 
-7. Useful development workflow
-
-- Make changes on `dev`
-- Run tests locally
-- Validate Docker build
-- Smoke-test Kubernetes deployment
-- Commit and push
-- Merge to `main` only after stable validation
-
-## Project goals
-
-- Create a practical AI navigation benchmark
-- Measure reasoning quality under uncertainty
-- Expose adversarial conditions for QA and security testing
-- Show how Java-based services can integrate with Kubernetes
-- Build an extensible platform for future AI and automation experiments
-
 ## Next steps
 
-- Add benchmark scoring and reporting
-- Introduce multiple agent strategies
-- Create adversarial maze scenarios
-- Add Kubernetes-based benchmark jobs
-- Integrate telemetry and dashboards
-- Expand support for security and policy testing
+- Implement level rendering and player sprite with direction-aware images
+- Wire up touch/click input to the four movement directions
+- Add win/lose detection and end-game dialogue
 
 ---
 
