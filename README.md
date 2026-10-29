@@ -22,18 +22,17 @@ _From game to benchmark: turn a simple maze into an intelligent validation platf
 
 </div>
 
-## **Branch note:** `dev`
+## **Branch note:** `feature/undo-playback`
 
-**Purpose**: Primary integration branch for active development. Features, fixes and refactors are merged here before being promoted to `main`.
+**Purpose**: Undo last move and full game playback from start. Both share a single move-history stack.
 
 **Notes**
 
-- Keep builds passing (`mvn test`).
-- Merge tested work only.
-- Sync regularly with `main`.
-- May be unstable; do not demo from here.
+- Depends on `feature/core-game` being merged first.
+- Store each move as (`direction`, `fromX`, `fromY`, `toX`, `toY`, `timestamp`) — single source of truth for both undo and playback.
+- Playback should be read-only; block input during playback.
 
-**Status**: Building the pipeline, invariants and property tests; planted-defect demo in progress (In Progress)
+**Status**: Not Started
 
 ## Architecture
 
@@ -192,12 +191,9 @@ mvn test
 
 ## Next steps
 
-- Add benchmark scoring and reporting
-- Introduce multiple agent strategies
-- Create adversarial maze scenarios
-- Add Kubernetes-based benchmark jobs
-- Integrate telemetry and dashboards
-- Expand support for security and policy testing
+- Introduce a `List<MoveRecord>` that every valid move appends to
+- Implement undo by popping the last record and restoring state
+- Build playback as a read-only replay iterating the list with a fixed delay
 
 ---
 
