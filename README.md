@@ -22,18 +22,17 @@ _From game to benchmark: turn a simple maze into an intelligent validation platf
 
 </div>
 
-## **Branch note:** `dev`
+## **Branch note:** `feature/persistence`
 
-**Purpose**: Primary integration branch for active development. Features, fixes and refactors are merged here before being promoted to `main`.
+**Purpose**: File/database loading and saving — load initial level state, win/lose dialogue with options, save game state mid-play, and load a previous unfinished game.
 
 **Notes**
 
-- Keep builds passing (`mvn test`).
-- Merge tested work only.
-- Sync regularly with `main`.
-- May be unstable; do not demo from here.
+- Depends on `feature/core-game` being merged first.
+- Use JSON or a simple flat file format; avoid a full DB for this project.
+- Test save → kill app → load → verify state matches.
 
-**Status**: Building the pipeline, invariants and property tests; planted-defect demo in progress (In Progress)
+**Status**: Not Started
 
 ## Architecture
 
@@ -192,12 +191,9 @@ mvn test
 
 ## Next steps
 
-- Add benchmark scoring and reporting
-- Introduce multiple agent strategies
-- Create adversarial maze scenarios
-- Add Kubernetes-based benchmark jobs
-- Integrate telemetry and dashboards
-- Expand support for security and policy testing
+- Define the save-state JSON schema and implement save/load
+- Add "Continue" option to the win/lose dialogue
+- Build the load-level-from-file picker
 
 ---
 
