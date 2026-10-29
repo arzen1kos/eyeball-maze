@@ -22,7 +22,7 @@ _From game to benchmark: turn a simple maze into an intelligent validation platf
 
 </div>
 
-## **Branch note:** `dev`
+## **Branch note:** `feature/audio`
 
 **Purpose**: All sound and video assets — sound toggle, win jingle, invalid-move sound, and rules explanation video.
 
