@@ -1,3 +1,71 @@
-# Ignore Visual Studio Code settings folder
+# ─── Build Output ───
+target/
+out/
+build/
+bin/
+
+# ─── Compiled / Packaged Files ───
+*.class
+*.jar
+*.war
+*.ear
+*.nar
+
+# ─── Maven ───
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# ─── Logs & Temp ───
+*.log
+*.log.*
+logs/
+*.tmp
+*~
+hs_err_pid*
+replay_pid*
+
+# ─── Sensitive / Local Config ───
+.env
+.env.*
+*.pem
+*.key
+*.keystore
+*.jks
+application-local.properties
+application-local.yml
+
+# ─── IDE: IntelliJ ───
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# ─── IDE: Eclipse ───
+.classpath
+.project
+.settings/
+.factorypath
+.springBeans
+.sts4-cache/
+
+# ─── IDE: VS Code ───
 .vscode/
-.junk/
+
+# ─── IDE: NetBeans ───
+nbproject/private/
+nbbuild/
+nbdist/
+.nb-gradle/
+
+# ─── OS Files ───
+.DS_Store
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/   
